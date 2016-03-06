@@ -261,7 +261,10 @@ class CloudifyClient(object):
             else:
                 port = DEFAULT_PORT
 
-        self.host = host
+        print '***** creating cloudify client with port: {0}'.format(port)
+        print '***** creating cloudify client with protocol: {0}'.format(protocol)
+        print '***** creating cloudify client, with host: {0}'.format(host)
+        self._host = host
         self._client = HTTPClient(host, port, protocol, api_version,
                                   headers, query_params, cert, trust_all)
         self.blueprints = BlueprintsClient(self._client)
@@ -281,4 +284,4 @@ class CloudifyClient(object):
 
     @property
     def host(self):
-        return self.host
+        return self._host
